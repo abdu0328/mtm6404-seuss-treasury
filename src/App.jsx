@@ -1,23 +1,31 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import './App.css';
 import Books from './pages/Books';
 import BookDetails from './pages/BookDetails';
 import Quotes from './pages/Quotes';
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <nav>
-        <Link to="/books">Books</Link>
-        <Link to="/quotes">Quotes</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<h1>Welcome to Seuss Treasury</h1>} />
-        <Route path="/books" element={<Books />} />
-        <Route path="/books/:id" element={<BookDetails />} />
-        <Route path="/quotes" element={<Quotes />} />
-      </Routes>
-    </div>
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Books</Link>
+            </li>
+            <li>
+              <Link to="/quotes">Quotes</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Books />} />
+          <Route path="/books/:id" element={<BookDetails />} />
+          <Route path="/quotes" element={<Quotes />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
